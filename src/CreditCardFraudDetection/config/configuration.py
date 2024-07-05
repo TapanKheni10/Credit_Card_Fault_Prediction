@@ -25,3 +25,16 @@ class ConfigurationManager:
             root_dir=Path(config.root_dir),
             local_data_path=config.local_data_path
         )
+    
+    def get_data_validation_config(self) -> config_entity.DataValidationConfig:
+        config = self.config.data_validation
+        schema = [self.schema.COLUMNS_DATA1, self.schema.COLUMNS_DATA2]
+
+        create_directories([config.root_dir])
+
+        return config_entity.DataValidationConfig(
+            root_dir = Path(config.root_dir),
+            local_data_path = config.local_data_path,
+            STATUS_FILE = config.STATUS_FILE,
+            all_schema = schema
+        )
