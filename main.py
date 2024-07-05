@@ -1,6 +1,6 @@
 from CreditCardFraudDetection.pipeline.stage_01_data_ingestion import DataIngestionPipeline
 from CreditCardFraudDetection.pipeline.stage_02_data_validation import DataValidationPipeline
-from CreditCardFraudDetection.pipeline.fraudulent_transection.stage_03_data_transformation import DataTransformationPipeline
+from CreditCardFraudDetection.pipeline.stage_03_data_transformation import DataTransformationPipeline
 
 from CreditCardFraudDetection import logger
 
