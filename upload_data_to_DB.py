@@ -29,7 +29,7 @@ for i in range(2):
     collection = db[COLLECTION_NAME[i]]
     
     data = pd.read_csv(file_paths[i])
-    data.drop(columns=[data.columns[0]], axis=1, inplace=True)
+    data.drop(columns=[list(data.columns)[0]], axis=1, inplace=True)
     
     data_dict = data.to_dict(orient='records')
 

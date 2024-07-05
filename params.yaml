@@ -1,0 +1,12 @@
+model_selection:
+  model:
+    RandomForestClassifier:
+      n_estimators: 100
+      random_state: 42
+
+    CatBoostClassifier:
+      iterations: 100
+
+    LGBMClassifier:
+      n_estimators: 100
+      random_state: 42

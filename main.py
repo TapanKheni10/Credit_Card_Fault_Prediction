@@ -1,0 +1,14 @@
+from CreditCardFraudDetection.pipeline.stage_01_data_ingestion import DataIngestionPipeline
+
+from CreditCardFraudDetection import logger
+
+STAGE_NAME = "data ingestion stage"
+
+try:
+    logger.info(f">>>>>>> stage {STAGE_NAME} started <<<<<<<")
+    obj = DataIngestionPipeline()
+    obj.main()
+    logger.info(f">>>>>>> stage {STAGE_NAME} completed <<<<<<<\n\nx==========x")
+except Exception as e:
+    logger.exception(e)
+    raise e

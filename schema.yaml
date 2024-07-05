@@ -1,0 +1,63 @@
+COLUMNS_DATA1:
+  V1 : float64
+  V2 : float64
+  V3 : float64
+  V4 : float64
+  V5 : float64
+  V6 : float64
+  V7 : float64
+  V8 : float64
+  V9 : float64
+  V10 : float64
+  V11 : float64
+  V12 : float64
+  V13 : float64
+  V14 : float64
+  V15 : float64
+  V16 : float64
+  V17 : float64
+  V18 : float64
+  V19 : float64
+  V20 : float64
+  V21 : float64
+  V22 : float64
+  V23 : float64
+  V24 : float64
+  V25 : float64
+  V26 : float64
+  V27 : float64
+  V28 : float64
+  Amount : float64
+  Class : int64
+
+COLUMNS_DATA2:
+  LIMIT_BAL : float64
+  SEX : int64
+  EDUCATION : int64
+  MARRIAGE : int64
+  AGE : int64
+  PAY_0 : int64
+  PAY_2 : int64
+  PAY_3 : int64
+  PAY_4 : int64
+  PAY_5 : int64
+  PAY_6 : int64
+  BILL_AMT1 : float64
+  BILL_AMT2 : float64
+  BILL_AMT3 : float64
+  BILL_AMT4 : float64
+  BILL_AMT5 : float64
+  BILL_AMT6 : float64
+  PAY_AMT1 : float64
+  PAY_AMT2 : float64
+  PAY_AMT3 : float64
+  PAY_AMT4 : float64
+  PAY_AMT5 : float64
+  PAY_AMT6 : float64
+  default.payment.next.month : int64
+
+TARGET_COLUMN:
+  - name: Class
+    type: int64
+  - name: default.payment.next.month
+    type: int64
