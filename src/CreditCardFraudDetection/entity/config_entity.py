@@ -20,3 +20,12 @@ class DataTransformationConfig:
     data_path: List[str]
     preprocessed_data_path: List[str]
     preprocessor_name: str
+
+@dataclass(frozen=True)
+class ModelTrainerConfig:
+    root_dir: Path
+    x_train_data_path: List[str]
+    y_train_data_path: List[str]
+    x_val_data_path: List[str]
+    y_val_data_path: List[str]
+    model_name: List[str]

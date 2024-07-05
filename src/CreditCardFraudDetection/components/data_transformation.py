@@ -19,10 +19,14 @@ class DataTransformation:
         train_data, test_data = train_test_split(data, stratify=data[stratify_column], test_size = 0.3, random_state = 42)
         logger.info("Data split into train and test sets successfully!")
 
+        train_data, validation_data = train_test_split(train_data, stratify=train_data[stratify_column], test_size = 0.3, random_state = 42)
+        logger.info("Train data split into train and validation sets successfully!")
+
         X_train, y_train, X_test, y_test = train_data.drop(stratify_column, axis=1), train_data[stratify_column], test_data.drop(stratify_column, axis=1), test_data[stratify_column]
+        X_val, y_val = validation_data.drop(stratify_column, axis=1), validation_data[stratify_column]
         logger.info("Features and target variable retrieved successfully!")
 
-        return X_train, X_test, y_train, y_test
+        return X_train, X_test, X_val, y_train, y_test, y_val
     
     def get_skewed_features(self, data: pd.DataFrame) -> List[str]:
         skewed_features = []
@@ -154,7 +158,7 @@ class DataTransformation:
         data = pd.read_csv(data_path)
         logger.info(f"Data loaded successfully from {data_path}")
         
-        X_train, X_test, y_train, y_test = self.split_data(data, 'Class') 
+        X_train, X_test, X_val, y_train, y_test, y_val = self.split_data(data, 'Class') 
         logger.info("Data split into train and test sets retrieved successfully!")
 
         preprocessor = self.get_preprocessor_for_fraudulent_transection(X_train)
@@ -164,11 +168,13 @@ class DataTransformation:
 
         X_train = preprocessor.fit_transform(X_train)
         X_test = preprocessor.transform(X_test)
+        X_val = preprocessor.transform(X_val)
 
         logger.info(f"After transformation: \n{X_train[:5]}")
 
         y_train = y_train.to_numpy()
         y_test = y_test.to_numpy()
+        y_val = y_val.to_numpy()
 
         preprocessed_data_path = self.config.preprocessed_data_path[0]
         if not os.path.exists(preprocessed_data_path):
@@ -176,8 +182,10 @@ class DataTransformation:
 
         np.save(os.path.join(preprocessed_data_path, "X_train.npy"), X_train)
         np.save(os.path.join(preprocessed_data_path, "X_test.npy"), X_test)
+        np.save(os.path.join(preprocessed_data_path, "X_val.npy"), X_val)
         np.save(os.path.join(preprocessed_data_path, "y_train.npy"), y_train)
         np.save(os.path.join(preprocessed_data_path, "y_test.npy"), y_test)
+        np.save(os.path.join(preprocessed_data_path, "y_val.npy"), y_val)
 
         logger.info("Data saved successfully!")
 
@@ -220,7 +228,7 @@ class DataTransformation:
         data = self.handle_imbalance(data)
         logger.info("Imbalance handled successfully")
 
-        X_train, X_test, y_train, y_test = self.split_data(data, "default_status_next_month")
+        X_train, X_test, X_val, y_train, y_test, y_val = self.split_data(data, "default_status_next_month")
         logger.info("Data split into train and test sets successfully")
 
         preprocessor = self.get_preprocessor_for_default_payment(X_train)
@@ -230,11 +238,13 @@ class DataTransformation:
 
         X_train = preprocessor.fit_transform(X_train)
         X_test = preprocessor.transform(X_test)
+        X_val = preprocessor.transform(X_val)
 
         logger.info(f"After transformation: \n{X_train[:5]}")
 
         y_train = y_train.to_numpy()
         y_test = y_test.to_numpy()
+        y_val = y_val.to_numpy()
 
         preprocessed_data_path = self.config.preprocessed_data_path[1]
         if not os.path.exists(preprocessed_data_path):
@@ -242,8 +252,10 @@ class DataTransformation:
 
         np.save(os.path.join(preprocessed_data_path, "X_train.npy"), X_train)
         np.save(os.path.join(preprocessed_data_path, "X_test.npy"), X_test)
+        np.save(os.path.join(preprocessed_data_path, "X_val.npy"), X_val)
         np.save(os.path.join(preprocessed_data_path, "y_train.npy"), y_train)
         np.save(os.path.join(preprocessed_data_path, "y_test.npy"), y_test)
+        np.save(os.path.join(preprocessed_data_path, "y_val.npy"), y_val)
 
         logger.info("Data saved successfully!")
 

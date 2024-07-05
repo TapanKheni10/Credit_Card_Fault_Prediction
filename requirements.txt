@@ -1,6 +1,6 @@
 aiofiles
 boto3
-catboost
+catboost==1.2.2
 database-connect
 dill
 dnspython
@@ -13,7 +13,7 @@ matplotlib
 mypy-boto3-s3
 neuro-mf
 notebook
-numpy
+numpy==1.26.0
 pandas
 pathlib
 pillow
