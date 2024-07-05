@@ -66,4 +66,17 @@ class ConfigurationManager:
             x_val_data_path = config.x_val_data_path,
             y_val_data_path = config.y_val_data_path,
             model_name = config.model_name
+        )
+    
+    def get_model_evaluation_config(self) -> config_entity.ModelEvaluationConfig:
+        config = self.config.model_evaluation
+
+        create_directories([config.root_dir])
+
+        return config_entity.ModelEvaluationConfig(
+            root_dir = Path(config.root_dir),
+            model_path = config.model_path,
+            x_test_data_path = config.x_test_data_path,
+            y_test_data_path = config.y_test_data_path,
+            evaluation_report = config.evaluation_report
         ) 

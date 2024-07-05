@@ -29,3 +29,11 @@ class ModelTrainerConfig:
     x_val_data_path: List[str]
     y_val_data_path: List[str]
     model_name: List[str]
+
+@dataclass(frozen=True)
+class ModelEvaluationConfig:
+    root_dir: Path
+    model_path: List[str]
+    x_test_data_path: List[str]
+    y_test_data_path: List[str]
+    evaluation_report: List[str]

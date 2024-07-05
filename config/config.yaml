@@ -22,3 +22,10 @@ model_trainer:
   x_val_data_path: [artifacts/data_transformation/fraudulent_transection/X_val.npy, artifacts/data_transformation/default_on_payment/X_val.npy]
   y_val_data_path: [artifacts/data_transformation/fraudulent_transection/y_val.npy, artifacts/data_transformation/default_on_payment/y_val.npy]
   model_name: [fraudulent.joblib, default.joblib]
+
+model_evaluation:
+  root_dir: artifacts/model_evaluation
+  model_path: [artifacts/model_trainer/fraudulent.joblib, artifacts/model_trainer/default.joblib]
+  x_test_data_path: [artifacts/data_transformation/fraudulent_transection/X_test.npy, artifacts/data_transformation/default_on_payment/X_test.npy]
+  y_test_data_path: [artifacts/data_transformation/fraudulent_transection/y_test.npy, artifacts/data_transformation/default_on_payment/y_test.npy]
+  evaluation_report: [artifacts/model_evaluation/fraudulent_transection, artifacts/model_evaluation/default_on_payment]
