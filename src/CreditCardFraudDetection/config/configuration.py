@@ -38,3 +38,17 @@ class ConfigurationManager:
             STATUS_FILE = config.STATUS_FILE,
             all_schema = schema
         )
+    
+    def get_data_transformation_config(self) -> config_entity.DataTransformationConfig:
+        config = self.config.data_transformation
+
+        create_directories([config.root_dir])
+
+        data_transformation_config = config_entity.DataTransformationConfig(
+            root_dir = config.root_dir,
+            data_path = config.data_path,
+            preprocessed_data_path = config.preprocessed_data_path,
+            preprocessor_name = config.preprocessor_name
+        )
+
+        return data_transformation_config  

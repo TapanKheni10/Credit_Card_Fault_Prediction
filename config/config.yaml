@@ -8,3 +8,9 @@ data_validation:
   root_dir: artifacts/data_validation
   local_data_path: [artifacts/data_ingestion/creditcard.csv, artifacts/data_ingestion/default.csv]
   STATUS_FILE: artifacts/data_validation/status.txt
+
+data_transformation:
+  root_dir: artifacts/data_transformation
+  data_path: [artifacts/data_ingestion/creditcard.csv, artifacts/data_ingestion/default.csv]
+  preprocessed_data_path: [artifacts/data_transformation/fraudulent_transection, artifacts/data_transformation/default_on_payment]
+  preprocessor_name: preprocessor.joblib

@@ -6,8 +6,6 @@ from typing import List
 class DataValidation:
     def __init__(self, config: DataValidationConfig):
         self.config = config
-        assert isinstance(self.config.local_data_path, List[str]), "local_data_path should be a list of strings"
-        assert isinstance(self.config.all_schema, List[dict]), "all_schema should be a list of dictionaries"
         assert len(self.config.local_data_path) == len(self.config.all_schema), "Mismatch between the number of data files and schema provided"
 
     def validate_all_columns(self) -> bool:
