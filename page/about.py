@@ -19,7 +19,7 @@ def run():
 
     st.header("About Us", divider="rainbow")
 
-    st.write("This is an AI-powered application desinged to help identify whether a particular credit card holder default or not and the transection is fraudulent or not, to help the lenderers. Our main goal is to leverage the power of machine learning and data analysis to do it.")
+    st.write("This is an AI-powered application desinged to help identify whether a particular credit card holder default or not and the transaction is fraudulent or not, to help the lenderers. Our main goal is to leverage the power of machine learning and data analysis to do it.")
     st.write("Our team consists of data scientists and software engineers who are passionate about using technology to make positive impact in the industry.")
 
     st.subheader("Contact us")

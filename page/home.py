@@ -38,29 +38,30 @@ def run():
     st.write("""
     - To determine the main factors that influence the likelihood of defaulting on a credit card.
     - To determine the likelihood that Bank customers will default on their credit card payments.
+    - To detect fraudulent transactions.
     """)
 
     st.subheader("Bussiness Context")
     st.write("""
     The goal of credit card default prediction is to help credit card companies and lenders to better manage their risk and minimize losses. 
-    By predicting which credit card users are likely to default on their payments or the fraudulent transection, lenders can take proactive steps to mitigate the risk.
+    By predicting which credit card users are likely to default on their payments or the fraudulent transaction, lenders can take proactive steps to mitigate the risk.
     """)
 
     st.header("How it works", divider="rainbow")
     st.write("""
-    The model is trained on a dataset that contains information about the credit card users and their payment history and multiple other attributes of the various transection, enabling it to:
+    The model is trained on a dataset that contains information about the credit card users and their payment history and multiple other attributes of the various transaction, enabling it to:
     - Predict whether a credit card user will default on their payments.
-    - Detect fraudulent transections.
+    - Detect fraudulent transactions.
 
     This AI enabled solution has the potential to:
-    - Reduce the number of fraudulent transections.
+    - Reduce the number of fraudulent transactions.
     - Reduce the number of credit card defaults.
     - Improve the overall security of credit card users.
     """)
 
     st.header("Key Features", divider="rainbow")
     st.write("""
-    Apart from predicting whether a credit card user will default on their payments or fraudulent transection, our model can also: 
+    Apart from predicting whether a credit card user will default on their payments or fraudulent transaction, our model can also: 
     - Provide insights into the factors that influence the likelihood of defaulting on a credit card.
     - simple and easy to use interface.    
     """)
