@@ -22,6 +22,8 @@ var/
 wheels/
 share/python-wheels/
 artifacts/data_ingestion/creditcard.*
+pages
+Home.py
 *.egg-info/
 .installed.cfg
 *.egg
