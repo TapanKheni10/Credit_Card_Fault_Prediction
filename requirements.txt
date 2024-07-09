@@ -33,4 +33,6 @@ watchfiles
 websockets
 wincertstore
 xgboost
--e .
+mlflow==2.2.2
+dvc
+# -e .

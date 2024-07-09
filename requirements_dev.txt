@@ -1,0 +1,46 @@
+aiofiles
+boto3
+catboost==1.2.2
+database-connect
+dill
+dnspython
+ensure
+imblearn
+ipykernel
+jinja2
+joblib==1.3.2
+matplotlib
+mypy-boto3-s3
+neuro-mf
+notebook
+numpy==1.26.0
+pandas
+pathlib
+pillow
+pip-chill
+pymongo
+python-box
+python-dotenv
+python-multipart
+pyyaml
+scikit-learn
+seaborn
+streamlit
+types-pyYAML
+types-s3transfer
+uvicorn
+watchfiles
+websockets
+wincertstore
+xgboost
+mlflow==2.2.2
+dvc
+
+## development requirements
+pytest==7.4.3 ## the testing can be done using this library
+tox==4.11.3 ## used for creating an testing environment 
+black==23.11.0
+flake8==6.1.0
+mypy==1.7.0
+
+-e .
