@@ -13,6 +13,9 @@ import joblib
 import os
 import time
 from CreditCardFraudDetection import logger
+# import mlflow
+# import mlflow.sklearn as mlf_sklearn
+# from urllib.parse import urlparse
 
 class ModelTrainer:
     def __init__(self, config: ModelTrainerConfig):
@@ -52,8 +55,19 @@ class ModelTrainer:
         
         model_performance = pd.DataFrame(columns=["accuracy", "precision", "recall", "f1_score", "training_time", "prediction_time", "total_time"])
 
+        # mlflow.set_experiment(f"model_{x}_comparison_experiment")
+
+        # tracking_url_type_store = urlparse(mlflow.get_tracking_uri()).scheme
+
         models = self.models[x-1]
+
         for i in range(len(models)):
+        
+            # with mlflow.start_run(run_name=f"{list(models.keys())[i]} model"):
+                     
+                # mlflow.log_param("model_name", list(models.keys())[i])
+                # mlflow.log_param("model_type", str(models[list(models.keys())[i]]))
+
             start_time = time.time()
             model = list(models.values())[i]
             model.fit(X_train, y_train)
@@ -63,6 +77,16 @@ class ModelTrainer:
             end_prediction = time.time()
 
             accuracy, precision, recall, f1 = self.evaluate_model(y_test, y_pred)
+
+                # mlflow.log_metric("accuracy", accuracy)
+                # mlflow.log_metric("precision", precision)
+                # mlflow.log_metric("recall", recall)
+                # mlflow.log_metric("f1_score", f1)
+
+                # if tracking_url_type_store != "file":
+                #     mlflow.sklearn.log_model(model, f"{list(models.keys())[i]} model", registered_model_name=f"{list(models.keys())[i]}")
+                # else:
+                #     mlflow.sklearn.log_model(model, f"{list(models.keys())[i]} model")
 
             model_performance.loc[list(models.keys())[i]] = [accuracy, precision, recall, f1, end_training-start_time, end_prediction-end_training, end_prediction-start_time]
 
@@ -75,16 +99,20 @@ class ModelTrainer:
         else:
             performance_file_name = 'default_model_performance.json'
             matrix = 'f1_score'
-        
+            
         model_performance.to_json(os.path.join(self.config.root_dir, performance_file_name))
         best_score = model_performance[matrix].max()
         best_model_name = model_performance[model_performance[matrix] == best_score].index[0]
+
+        # logger.info(f"Experiments {mlflow.get_experiment_by_name(f'model_{x}_comparison_experiment').experiment_id} completed")
 
         return best_score, best_model_name
 
 
     def train(self, model_number: int):
         assert model_number in [1, 2], "model_number should be either 1 or 2"
+
+        logger.info(f"Training model_{model_number} started")
 
         logger.info("Training the model...")
         X_train_path = self.config.x_train_data_path[model_number-1]

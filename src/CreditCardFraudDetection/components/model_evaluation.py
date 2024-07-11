@@ -7,6 +7,7 @@ from CreditCardFraudDetection import logger
 from CreditCardFraudDetection.entity.config_entity import ModelEvaluationConfig
 from pathlib import Path
 from CreditCardFraudDetection.utils.common import save_json
+# import mlflow
 
 class ModelEvaluation:
     def __init__(self, config: ModelEvaluationConfig):
@@ -24,6 +25,11 @@ class ModelEvaluation:
     def evaluate_model(self, model_number: int):
         assert model_number in [1, 2], "Invalid model number, It should be 1 or 2"
 
+        # mlflow.set_experiment(f"model_{model_number}_testing_experiment")
+        
+        # with mlflow.start_run(run_name=f"model_{model_number}_testing_run"):
+            
+        logger.info(f"Starting evaluation for model {model_number}")
         X_test = np.load(self.config.x_test_data_path[model_number - 1])
         y_test = np.load(self.config.y_test_data_path[model_number - 1])
         logger.info(f"Loaded test data for model {model_number}")
@@ -36,6 +42,12 @@ class ModelEvaluation:
         logger.info(f"Predictions for model {model_number} done")
 
         accuracy, precision, recall, f1, roc_auc = self.calculate_metrics(y_test, y_pred, y_prob)
+            # mlflow.log_metric("accuracy_score", accuracy)
+            # mlflow.log_metric("precision_score", precision)
+            # mlflow.log_metric("recall_score", recall)
+            # mlflow.log_metric("f1_score", f1)
+            # mlflow.log_metric("roc_auc_score", roc_auc)
+            
         logger.info(f"Metrics calculated for model {model_number}")
 
         scores = {
@@ -48,10 +60,10 @@ class ModelEvaluation:
 
         if not os.path.exists(self.config.evaluation_report[model_number - 1]):
             os.makedirs(self.config.evaluation_report[model_number - 1])
-            
+                
         save_json(path = Path(os.path.join(self.config.evaluation_report[model_number - 1], "metrics.json")), data = scores)
         np.save(os.path.join(self.config.evaluation_report[model_number - 1], "y_pred.npy"), y_pred)
         np.save(os.path.join(self.config.evaluation_report[model_number - 1], "y_prob.npy"), y_prob)
         logger.info(f"Metrics saved for model {model_number}")
 
-        
+            
