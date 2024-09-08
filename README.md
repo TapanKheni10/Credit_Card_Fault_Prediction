@@ -60,6 +60,10 @@ This AI enabled solution has the potential to:
 <img style="width:49%; margin-top:10px;" src="./assets/11.png">
 <img style="width:49%; margin-top:10px;" src="./assets/12.png">
 <img style="width:49%; margin-top:10px;" src="./assets/13.png">
+<img style="width:49%; margin-top:10px;" src="./assets/14.png">
+<img style="width:49%; margin-top:10px;" src="./assets/15.png">
+<img style="width:49%; margin-top:10px;" src="./assets/16.png">
+<img style="width:49%; margin-top:10px;" src="./assets/17.png">
 </div>
 
 ## How to Start Project
