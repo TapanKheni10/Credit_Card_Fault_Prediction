@@ -5,6 +5,7 @@ from page import insights, comparison, predictor, about, cognitive_training, hom
 PAGES = {
     "Home": {"page": home, "title": "FinancialFirewall", "icon": ":credit_card:"},
     "Cognitive Training": {"page": cognitive_training, "title": "Model Trainer", "icon": "⭕️"},
+    "Get Insights": {"page": insights, "title": "Insights", "icon": "📊"},
     "Detect Irregularities": {"page": predictor, "title": "Prediction Workspace", "icon": "🔮"},
     "About Us": {"page": about, "title": "About Us", "icon": "👤"},
 }
